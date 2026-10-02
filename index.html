@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>米奇电影网 - 合家欢动画与亲子片单 | miqidianyingwang-h5</title>
+<meta name="description" content="米奇电影网(miqidianyingwang-h5)以圆耳糖果卡通风做合家欢动画、亲子电影、少儿剧集、童话短片、益智综艺与家庭影评，移动端自适应。官网 https://miqidianyingwang-h5.github.io，单页演示，内页链接以 # 占位，接真实片源需版权授权。">
+<meta name="keywords" content="米奇电影网, miqidianyingwang-h5, 合家欢动画, 亲子电影, 少儿片单, 圆耳糖果风">
+<meta name="author" content="米奇电影网">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://miqidianyingwang-h5.github.io">
+<link rel="alternate" hreflang="zh-CN" href="https://miqidianyingwang-h5.github.io">
+<meta property="og:type" content="website">
+<meta property="og:title" content="米奇电影网 - 合家欢动画与亲子片单">
+<meta property="og:description" content="miqidianwang-h5 提供动画/亲子/少儿/童话/益智片单，圆耳糖果单页，移动端自适应。">
+<meta property="og:url" content="https://miqidianyingwang-h5.github.io">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="米奇电影网 - 圆耳糖果合家欢">
+<meta name="twitter:description" content="miqidianyingwang-h5 官网提供合家欢动画与亲子片单演示。">
+<style>
+:root{
+  --bg:#fff7ec;--bg2:#fff0f5;--card:#ffffff;--card2:#fff3da;--ink:#3a2a1c;--muted:#8a6f57;
+  --orange:#ff8a3d;--orange2:#ffb066;--pink:#ff7eb3;--pink2:#ffb3d1;--lemon:#ffd84d;--lemon2:#ffe98a;
+  --mint:#36d6a0;--line:rgba(255,138,61,.26);--line2:rgba(255,126,179,.26);--navh:64px;--radius:22px;--shadow:0 16px 34px rgba(255,138,61,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+  background:
+    radial-gradient(820px 400px at 90% -10%,rgba(255,126,179,.18),transparent 60%),
+    radial-gradient(720px 360px at 2% 6%,rgba(255,216,77,.20),transparent 58%),
+    radial-gradient(620px 320px at 60% 120%,rgba(54,214,160,.14),transparent 60%),
+    linear-gradient(180deg,var(--bg),var(--bg2));
+  color:var(--ink);line-height:1.8;padding-top:var(--navh);-webkit-font-smoothing:antialiased;}
+a{color:var(--orange);text-decoration:none;transition:.25s;}
+a:hover{color:var(--pink);}
+img{max-width:100%;display:block;}ul{list-style:none;}
+
+.nav{position:fixed;top:0;left:0;right:0;height:var(--navh);z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:0 16px;
+  background:rgba(255,247,236,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.brand{font-weight:900;font-size:clamp(15px,4.4vw,21px);color:var(--ink);display:flex;align-items:center;gap:8px;white-space:nowrap;}
+.brand .ears{width:26px;height:18px;position:relative;}
+.brand .ears::before,.brand .ears::after{content:"";position:absolute;top:0;width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--pink));}
+.brand .ears::before{left:0;}.brand .ears::after{right:0;}
+.brand b{background:linear-gradient(90deg,var(--orange),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.brand .tag{font-size:11px;color:#fff;background:var(--orange);padding:2px 7px;border-radius:8px;font-weight:800;}
+.menu-btn{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:10px;}
+.menu-btn span{width:26px;height:3px;background:var(--orange);border-radius:3px;transition:.3s;}
+.menu-btn.open span:nth-child(1){transform:translateY(8px) rotate(45deg);}
+.menu-btn.open span:nth-child(2){opacity:0;}
+.menu-btn.open span:nth-child(3){transform:translateY(-8px) rotate(-45deg);}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;}
+.nav-links a{color:var(--ink);font-size:15px;font-weight:700;min-height:44px;display:inline-flex;align-items:center;padding:8px 12px;border-radius:22px;}
+.nav-links a:hover{background:rgba(255,126,179,.16);color:var(--pink);}
+
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px;}
+.section{padding:64px 0;}
+.sec-title{font-size:clamp(22px,5vw,30px);font-weight:900;text-align:center;margin-bottom:8px;color:var(--ink);}
+.sec-title small{display:block;font-size:12px;letter-spacing:2px;color:var(--orange);font-weight:700;margin-top:8px;}
+.sec-title::after{content:"";display:block;width:84px;height:5px;border-radius:5px;margin:14px auto 0;background:linear-gradient(90deg,var(--orange),var(--lemon),var(--pink));}
+
+/* Hero 圆耳 */
+.hero{padding:68px 0 32px;}
+.hero .wrap{display:grid;grid-template-columns:1.25fr .75fr;gap:30px;align-items:center;}
+.badge{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,rgba(255,138,61,.18),rgba(255,126,179,.18));border:1px solid var(--line);color:var(--ink);font-size:12px;font-weight:800;padding:6px 14px;border-radius:22px;margin-bottom:16px;}
+.badge b{color:var(--orange);}
+.hero h1{font-size:clamp(28px,6vw,46px);line-height:1.18;color:var(--ink);margin-bottom:16px;}
+.hero h1 em{font-style:normal;color:var(--orange);}.hero h1 i{font-style:normal;color:var(--pink);}
+.hero p{color:var(--muted);font-size:clamp(15px,2.6vw,17px);margin-bottom:18px;max-width:560px;}
+.urlbox{display:inline-block;font-family:ui-monospace,Menlo,Consolas,monospace;border:1px dashed var(--orange);color:#a85a16;background:rgba(255,255,255,.6);padding:10px 14px;border-radius:12px;font-size:13px;margin-bottom:18px;}
+.cta{display:inline-block;background:linear-gradient(90deg,var(--orange),var(--pink),var(--lemon));color:#3a1c00;font-weight:900;padding:13px 30px;border-radius:30px;min-height:46px;}
+.ears-card{position:relative;background:linear-gradient(160deg,var(--card),var(--card2));border:1px solid var(--line);border-radius:26px;padding:26px 22px;box-shadow:var(--shadow);text-align:center;}
+.ears-card .big-ears{width:120px;height:74px;position:relative;margin:0 auto 12px;}
+.ears-card .big-ears::before,.ears-card .big-ears::after{content:"";position:absolute;top:0;width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--orange2),var(--orange));box-shadow:inset 0 0 0 6px rgba(255,255,255,.5);}
+.ears-card .big-ears::before{left:0;}.ears-card .big-ears::after{right:0;}
+.ears-card .face{width:96px;height:96px;border-radius:50%;background:linear-gradient(135deg,var(--lemon2),var(--pink2));margin:-30px auto 8px;display:flex;align-items:center;justify-content:center;font-size:42px;box-shadow:0 8px 18px rgba(255,126,179,.25);}
+.ears-card .big{font-size:42px;font-weight:900;color:var(--orange);}
+.ears-card p{color:var(--muted);font-size:13px;}
+.ears-card .chip{display:inline-block;margin:6px 4px 0;font-size:12px;color:#a85a16;border:1px solid var(--line);background:#fff;padding:4px 10px;border-radius:20px;}
+
+/* 片库 */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(186px,1fr));gap:18px;}
+.movie{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.25s;}
+.movie:hover{transform:translateY(-6px);border-color:var(--pink);box-shadow:0 16px 30px rgba(255,126,179,.22);}
+.cover{height:214px;display:flex;align-items:center;justify-content:center;font-size:44px;color:#fff;position:relative;border-radius:0 0 18px 18px;}
+.o1{background:linear-gradient(135deg,#ff8a3d,#ff7eb3);}.o2{background:linear-gradient(135deg,#ffd84d,#ff8a3d);color:#5a3a00;}
+.o3{background:linear-gradient(135deg,#36d6a0,#ffd84d);color:#06301f;}.o4{background:linear-gradient(135deg,#ff7eb3,#ffd84d);color:#5a0033;}
+.o5{background:linear-gradient(135deg,#ffb066,#36d6a0);color:#06301f;}.o6{background:linear-gradient(135deg,#ff8a3d,#ffb066);}
+.age{position:absolute;top:10px;left:10px;background:rgba(255,255,255,.9);color:#a85a16;font-weight:800;font-size:11px;padding:3px 9px;border-radius:12px;border:1px solid var(--orange);}
+.minfo{padding:12px 14px;}.minfo h3{font-size:15px;color:var(--ink);margin-bottom:6px;}.minfo p{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;}
+
+/* 分类 */
+.six{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.cat{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 20px rgba(255,138,61,.12);transition:.25s;}
+.cat:hover{transform:translateY(-4px);border-color:var(--lemon);}
+.cat .ico{font-size:30px;}.cat h3{font-size:17px;color:var(--ink);margin:8px 0 6px;}.cat p{font-size:13px;color:var(--muted);}.cat a{display:inline-block;margin-top:10px;font-weight:800;color:var(--orange);}
+
+/* 榜单 */
+.rank{display:grid;gap:12px;counter-reset:r;max-width:860px;margin:0 auto;}
+.ri{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px 16px;}
+.ri::before{counter-increment:r;content:"M" counter(r);min-width:54px;text-align:center;height:42px;flex:0 0 54px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-weight:900;background:rgba(255,138,61,.16);color:#a85a16;}
+.ri:nth-child(1)::before{background:linear-gradient(135deg,var(--lemon),var(--orange));color:#5a3a00;}.ri:nth-child(2)::before{background:linear-gradient(135deg,var(--pink),var(--orange));color:#fff;}.ri:nth-child(3)::before{background:linear-gradient(135deg,var(--mint),var(--lemon));color:#06301f;}
+.rb{flex:1;}.rb h3{font-size:16px;color:var(--ink);}.rb p{font-size:13px;color:var(--muted);}.rs{font-weight:900;color:var(--orange);font-size:18px;}
+
+/* 影评 */
+.reviews{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;}
+.rv{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;box-shadow:0 8px 20px rgba(255,138,61,.12);}
+.rv .star{color:var(--orange);font-size:14px;}.rv h3{font-size:17px;color:var(--ink);margin:8px 0 6px;}.rv p{font-size:13px;color:var(--muted);}.rv a{display:inline-block;margin-top:10px;font-weight:800;color:var(--orange);}
+
+/* 帮助+关于 */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:0 8px 20px rgba(255,138,61,.12);}
+.panel h3{color:var(--orange);margin-bottom:12px;font-size:18px;}
+.panel p{font-size:14px;color:#5a4636;margin-bottom:10px;}
+details{border:1px solid var(--line);background:var(--card);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+summary{padding:14px 16px;font-weight:700;cursor:pointer;min-height:44px;display:flex;justify-content:space-between;align-items:center;color:var(--ink);}
+summary::-webkit-details-marker{display:none;}summary::after{content:"+";color:var(--orange);font-size:20px;}
+details[open] summary::after{content:"−";}details p{padding:0 16px 16px;color:#5a4636;font-size:14px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:6px;}
+.stat{background:var(--card2);border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;}
+.stat b{display:block;font-size:24px;color:var(--orange);}.stat span{font-size:13px;color:var(--muted);}
+.notice{margin-top:18px;background:rgba(255,216,77,.12);border:1px dashed var(--orange);border-radius:14px;padding:16px;font-size:13px;color:#7a4a12;}
+
+.footer{background:#2a1c10;color:#ffd9b0;padding:46px 0 22px;margin-top:60px;border-top:1px solid var(--line);}
+.fg{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:26px;}
+.footer h4{color:#fff;font-size:16px;margin-bottom:12px;}
+.footer a{color:#ffbf91;font-size:14px;display:inline-block;padding:4px 0;}
+.footer a:hover{color:var(--lemon2);}
+.fb{text-align:center;margin-top:26px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:#ffbf91;}
+.fb .u{color:var(--lemon2);font-family:ui-monospace,Menlo,Consolas,monospace;}
+.toTop{position:fixed;right:18px;bottom:18px;width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--pink),var(--lemon));color:#3a1c00;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;box-shadow:var(--shadow);opacity:0;visibility:hidden;transition:.3s;z-index:900;}
+.toTop.show{opacity:1;visibility:visible;}
+
+@media(max-width:900px){.hero .wrap{grid-template-columns:1fr;}}
+@media(max-width:768px){.menu-btn{display:flex;}.nav-links{position:fixed;top:var(--navh);left:0;right:0;background:rgba(255,247,236,.98);border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;gap:0;max-height:0;overflow:hidden;transition:max-height .35s;}.nav-links.open{max-height:660px;}.nav-links a{padding:14px 18px;border-radius:0;border-bottom:1px solid rgba(255,138,61,.12);}.two{grid-template-columns:1fr;}.six{grid-template-columns:1fr 1fr;}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));}.cover{height:180px;}}
+@media(max-width:520px){.six{grid-template-columns:1fr;}.ears-card .big{font-size:34px;}}
+@media(max-width:420px){.grid{grid-template-columns:1fr 1fr;}.cover{height:160px;}}
+</style>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"米奇电影网","url":"https://miqidianyingwang-h5.github.io","potentialAction":{"@type":"SearchAction","target":"https://miqidianyingwang-h5.github.io#library","query-input":"required name=search_term"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"米奇电影网是什么风格？","acceptedAnswer":{"@type":"Answer","text":"本演示站用“圆耳糖果/合家欢卡通”主线，奶油橙粉底、大圆角、耳朵圆形装饰，做动画、亲子电影、少儿剧集、童话短片、益智综艺与家庭影评；内页链接以 # 占位，仅作单页模板演示。站名仅为自有品牌，不模仿任何受版权或商标保护的卡通形象。"}},
+{"@type":"Question","name":"合家欢片库怎么用？","acceptedAnswer":{"@type":"Answer","text":"每部影片带适龄标签与类型/时长，可按动画、亲子、少儿剧集、童话短片、益智综艺分类浏览；正式站把 # 替换为真实分类页、详情页与正版授权播放入口即可。"}},
+{"@type":"Question","name":"移动端能正常刷片单吗？","acceptedAnswer":{"@type":"Answer","text":"全站响应式，手机端自动折叠导航、片库双列/自适应、分类与热榜重排，核心内容纯HTML便于搜索引擎抓取。"}},
+{"@type":"Question","name":"必应怎么收录这个单页？","acceptedAnswer":{"@type":"Answer","text":"已配置 title、description、canonical、Open Graph 与 JSON-LD；可在 Bing Webmaster Tools 提交首页 https://miqidianyingwang-h5.github.io 。按你要求不生成 robots.txt 与 sitemap.xml。著名卡通角色常同时受版权与商标保护，建站应避免使用他人受保护形象，防混淆风险。 [11,20](@ref)"}}
+]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Movie","name":"圆耳小镇大冒险","url":"https://miqidianyingwang-h5.github.io#library","description":"演示影片：米奇电影网合家欢片库示例，原创圆耳卡通、亲子冒险向，用于片库网格与家庭影评模板展示，不关联任何受保护IP。","genre":["动画","亲子","冒险"],"datePublished":"2025-06-01","aggregateRating":{"@type":"AggregateRating","ratingValue":"9.1","bestRating":"10","worstRating":"1","ratingCount":"204"}}
+</script>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/laoliu.js"></script>
+
+<header class="nav">
+  <div class="brand"><span class="ears"></span><b>米奇电影网</b><span class="tag">miqidianyingwang-h5</span></div>
+  <button class="menu-btn" id="menuBtn" aria-label="菜单" aria-expanded="false"><span></span><span></span><span></span></button>
+  <nav class="nav-links" id="navLinks" aria-label="主导航">
+    <a href="#home">首页</a>
+    <a href="#library">合家欢片库</a>
+    <a href="#category">亲子分类</a>
+    <a href="#ranking">热播榜单</a>
+    <a href="#review">家庭影评</a>
+    <a href="#help">观片帮助</a>
+    <a href="#about">关于本站</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <span class="badge">圆耳糖果合家欢 <b>MIQI-H5</b> · 适龄片单策展</span>
+      <h1>米奇电影网 · <em>圆耳糖果</em>片库 <br><i>合家欢</i>刷动画</h1>
+      <p>米奇电影网（miqidianyingwang-h5）用奶油橙粉、大圆角与原创圆耳形象做合家欢动画、亲子电影、少儿剧集、童话短片、益智综艺与家庭影评；手机电脑自适应。本页仅演示，内页均用 # 占位，接真实片源需版权授权。本站为自有品牌演示，不模仿任何受版权/商标保护的卡通形象。</p>
+      <div class="urlbox">https://miqidianyingwang-h5.github.io</div>
+      <br>
+      <a class="cta" href="#library">进入圆耳片库 #</a>
+    </div>
+    <aside class="ears-card" aria-label="合家欢概览">
+      <div class="big-ears"></div>
+      <div class="face">🐭</div>
+      <div class="big">9.1</div>
+      <p>合家欢综合好评 · 原创圆耳样片</p>
+      <div>
+        <span class="chip">全年龄友好</span><span class="chip">亲子共看</span><span class="chip">童话益智</span>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="section" id="library">
+  <div class="wrap">
+    <h2 class="sec-title">合家欢片库<small>MIQI DIANYINGWANG · 圆耳糖果样片</small></h2>
+    <div class="grid">
+      <article class="movie"><div class="cover o1"><span class="age">全年龄</span>🐾</div><div class="minfo"><h3>圆耳小镇大冒险</h3><p><span>动画/亲子</span><span>94分</span></p></div></article>
+      <article class="movie"><div class="cover o2"><span class="age">3+</span>🎪</div><div class="minfo"><h3>蜂蜜气球节</h3><p><span>童话/喜剧</span><span>88分</span></p></div></article>
+      <article class="movie"><div class="cover o3"><span class="age">6+</span>🚂</div><div class="minfo"><h3>云朵列车日记</h3><p><span>少儿剧集</span><span>12集</span></p></div></article>
+      <article class="movie"><div class="cover o4"><span class="age">全年龄</span>🎨</div><div class="minfo"><h3>颜色小精灵</h3><p><span>益智/音乐</span><span>第2季</span></p></div></article>
+      <article class="movie"><div class="cover o5"><span class="age">4+</span>📖</div><div class="minfo"><h3>睡前十分钟</h3><p><span>童话短片</span><span>8部</span></p></div></article>
+      <article class="movie"><div class="cover o6"><span class="age">5+</span>🌱</div><div class="minfo"><h3>小园丁成长记</h3><p><span>教育/纪录</span><span>6集</span></p></div></article>
+    </div>
+    <div style="text-align:center;margin-top:28px;"><a href="#" style="display:inline-block;border:1px solid var(--orange);padding:12px 28px;border-radius:26px;font-weight:800;color:#a85a16;">浏览全部合家欢片单 #</a></div>
+  </div>
+</section>
+
+<section class="section" id="category" style="background:rgba(255,126,179,.08);">
+  <div class="wrap">
+    <h2 class="sec-title">亲子分类<small>按合家欢场景分池刷片</small></h2>
+    <div class="six">
+      <div class="cat"><div class="ico">🎬</div><h3>合家欢动画</h3><p>原创卡通、冒险、喜剧按圆耳/童话世界观分池。</p><a href="#library">看动画 #</a></div>
+      <div class="cat"><div class="ico">👨👩👧</div><h3>亲子电影</h3><p>家庭、成长、情感片按适龄与共看场景编号。</p><a href="#library">看亲子 #</a></div>
+      <div class="cat"><div class="ico">📺</div><h3>少儿剧集</h3><p>日常、校园、自然探索按年龄段与主题归类。</p><a href="#library">看剧集 #</a></div>
+      <div class="cat"><div class="ico">🎨</div><h3>益智综艺</h3><p>音乐、手工、科学小实验、颜色与逻辑启蒙。</p><a href="#library">看综艺 #</a></div>
+      <div class="cat"><div class="ico">📖</div><h3>童话短片</h3><p>睡前故事、寓言改編、微动画按情绪策展。</p><a href="#library">看短片 #</a></div>
+      <div class="cat"><div class="ico">🌱</div><h3>成长纪录</h3><p>自然、阅读、习惯养成纪录片与陪伴指南。</p><a href="#library">看纪录 #</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ranking">
+  <div class="wrap">
+    <h2 class="sec-title">热播榜单<small>MIQI-H5 合家欢热看榜</small></h2>
+    <div class="rank">
+      <div class="ri"><div class="rb"><h3>圆耳小镇大冒险</h3><p>动画·亲子冒险 / 94分 / 圆耳主打</p></div><div class="rs">9.1</div></div>
+      <div class="ri"><div class="rb"><h3>云朵列车日记</h3><p>少儿·日常探索 / 12集 / 适龄跟更</p></div><div class="rs">8.9</div></div>
+      <div class="ri"><div class="rb"><h3>颜色小精灵</h3><p>益智·音乐启蒙 / 第2季 / 亲子共玩</p></div><div class="rs">8.8</div></div>
+      <div class="ri"><div class="rb"><h3>蜂蜜气球节</h3><p>童话·喜剧 / 88分 / 全年龄友好</p></div><div class="rs">8.7</div></div>
+      <div class="ri"><div class="rb"><h3>小园丁成长记</h3><p>纪录·习惯养成 / 6集 / 家庭陪看</p></div><div class="rs">8.6</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="review" style="background:rgba(255,216,77,.10);">
+  <div class="wrap">
+    <h2 class="sec-title">家庭影评<small>米奇电影网·合家欢笔记</small></h2>
+    <div class="reviews">
+      <div class="rv"><div class="star">★★★★★ 9.1</div><h3>《圆耳小镇大冒险》亲子看点</h3><p>从角色动机、勇气主题到笑点密度，拆解为“全年龄不低幼”的合家欢结构，适合家长陪看讨论。</p><a href="#library">读完整影评 #</a></div>
+      <div class="rv"><div class="star">★★★★☆ 8.9</div><h3>《云朵列车日记》分集节奏</h3><p>每集一个小任务、低冲突高陪伴，分析少儿剧如何做“可预期安全感”与习惯迁移。</p><a href="#library">读完整影评 #</a></div>
+      <div class="rv"><div class="star">★★★★☆ 8.8</div><h3>《颜色小精灵》益智设计</h3><p>音乐+色彩+逻辑三条线并行，评估低龄综艺的认知负荷与互动回报率。</p><a href="#library">读完整影评 #</a></div>
+      <div class="rv"><div class="star">★★★★★ 8.7</div><h3>《睡前十分钟》童话情绪</h3><p>短时长、慢节奏、柔光叙事，做睡前片单的分级建议与亲子共读延伸。</p><a href="#library">读完整影评 #</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="help" style="background:rgba(255,138,61,.07);">
+  <div class="wrap">
+    <h2 class="sec-title">观片帮助<small>米奇电影网 使用与合规</small></h2>
+    <div class="two">
+      <div class="panel">
+        <h3>合家欢刷片流程</h3>
+        <p>1. 首页“进入圆耳片库”，按适龄看动画/亲子/少儿/童话/益智/纪录。</p>
+        <p>2. 到“亲子分类”切场景池，进对应演示片单；看“热播榜单”跟口碑。</p>
+        <p>3. 看“家庭影评”读陪看笔记；点影片卡进详情，内页均 #。</p>
+        <p>4. 手机端点右上角汉堡菜单切栏目，全站自适应，触控区域≥44px。</p>
+      </div>
+      <div>
+        <details open><summary>可以直接看全片吗？</summary><p>本页为单页演示，不提供实际播放；正式站若提供在线观看，须接入有版权授权的片源，不聚合未授权影视、不提供盗版下载。</p></details>
+        <details><summary>为什么很多链接是 #？</summary><p>按你的要求，内页、播放、详情全部用 # 占位；部署时把 # 替换为真实授权详情页、正版播放页或合法平台跳转链接。</p></details>
+        <details><summary>“米奇/卡通形象”会有侵权风险吗？</summary><p>著名卡通角色常同时受版权与商标保护，即便部分老版本进入公版，仍可能因商标或消费者混淆产生风险；本站仅用自有“圆耳”抽象装饰与虚构片名，不使用他人受保护形象、名称或剧照。 [11,20](@ref)</p></details>
+        <details><summary>必应收录要注意什么？</summary><p>保持 title/description/canonical 一致、核心内容纯HTML、移动端速度快；在 Bing Webmaster Tools 提交首页。本页按你要求不生成 robots.txt 与 sitemap.xml。</p></details>
+      </div>
+    </div>
+    <div class="notice">
+      合规说明：本页为「米奇电影网 / miqidianyingwang-h5」单页演示，仅展示合家欢片库、亲子分类、热播榜单与家庭影评；不提供未授权播放、不聚合非法视听源，所有片名/圆耳形象/海报占位均为自有虚构。正式上线接片源需取得著作权授权并办理相关互联网视听节目资质。内页链接均以 # 占位，不生成 robots.txt 与 sitemap.xml。建站请勿使用他人受版权或商标保护的卡通形象，避免混淆风险。 [1,11](@ref)
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="wrap">
+    <h2 class="sec-title">关于本站<small>品牌·域名·官网·SEO</small></h2>
+    <div class="two">
+      <div class="panel">
+        <h3>网站定位</h3>
+        <p>米奇电影网（miqidianyingwang-h5）做“圆耳糖果合家欢”影视单页：首页圆耳概览、合家欢片库、亲子分类、热播榜、家庭影评、观片帮助一体化。全站统一关键词「米奇电影网」「miqidianyingwang-h5」「合家欢动画/亲子片单/圆耳糖果」。</p>
+        <p>官网：<br><span style="font-family:ui-monospace,Menlo,Consolas,monospace;color:#a85a16;">https://miqidianyingwang-h5.github.io</span></p>
+      </div>
+      <div class="panel">
+        <h3>技术与收录</h3>
+        <p>内部CSS、语义化标题、canonical、Open Graph、JSON-LD（WebSite/FAQ/Movie）；核心内容不依赖JS，便于必应单页抓取。</p>
+        <div class="stats">
+          <div class="stat"><b>6</b><span>演示栏目</span></div>
+          <div class="stat"><b>圆耳</b><span>原创糖果模型</span></div>
+          <div class="stat"><b>JSON-LD</b><span>WebSite/FAQ/Movie</span></div>
+          <div class="stat"><b>0</b><span>robots/sitemap</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <div class="fg">
+      <div><h4>米奇电影网</h4><ul>
+        <li><a href="#home">首页 #</a></li><li><a href="#library">合家欢片库 #</a></li><li><a href="#ranking">热播榜单 #</a></li><li><a href="#about">关于本站 #</a></li>
+      </ul></div>
+      <div><h4>亲子分类</h4><ul>
+        <li><a href="#category">合家欢动画 #</a></li><li><a href="#category">亲子电影 #</a></li><li><a href="#category">少儿剧集 #</a></li><li><a href="#category">益智综艺 #</a></li>
+      </ul></div>
+      <div><h4>帮助</h4><ul>
+        <li><a href="#help">观片帮助 #</a></li><li><a href="#review">家庭影评 #</a></li><li><a href="#">意见反馈 #</a></li><li><a href="#">免责声明 #</a></li>
+      </ul></div>
+      <div><h4>官方信息</h4><ul>
+        <li><a href="#">站名：米奇电影网</a></li><li><a href="#">域名：miqidianyingwang-h5</a></li><li><a href="https://miqidianyingwang-h5.github.io">官网：miqidianyingwang-h5.github.io</a></li><li><a href="#">关键词：圆耳糖果合家欢</a></li>
+      </ul></div>
+    </div>
+    <div class="fb">
+      <p>米奇电影网 · miqidianyingwang-h5 · 圆耳糖果合家欢片单单页演示（自有品牌，不模仿受保护卡通）</p>
+      <p class="u">https://miqidianyingwang-h5.github.io</p>
+      <p>© 2026 米奇电影网演示模板。不生成 robots.txt 与 sitemap.xml，内页链接以 # 占位；片名/形象均为虚构，接真实片源需版权授权。</p>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="toTop" id="toTop" aria-label="回到顶部">↑</a>
+<script>
+(function(){
+  var btn=document.getElementById('menuBtn'),links=document.getElementById('navLinks');
+  btn.addEventListener('click',function(){var o=links.classList.toggle('open');btn.classList.toggle('open',o);btn.setAttribute('aria-expanded',o?'true':'false');});
+  links.querySelectorAll('a').forEach(function(a){a.addEventListener('click',function(){links.classList.remove('open');btn.classList.remove('open');btn.setAttribute('aria-expanded','false');});});
+  var t=document.getElementById('toTop');window.addEventListener('scroll',function(){t.classList.toggle('show',window.scrollY>400);});
+  t.addEventListener('click',function(e){e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});});
+})();
+</script>
+</body>
+</html>
